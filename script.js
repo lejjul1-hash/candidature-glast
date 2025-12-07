@@ -40,24 +40,56 @@ async function sendForm() {
         extra: extra.value
     };
 
+    // ⭐⭐⭐ EMBED AMÉLIORÉ ET DÉTAILLÉ (sans IP) ⭐⭐⭐
     const payload = {
         content: `<@&${ROLE_ID}>`,
         embeds: [{
-            title: "📩 Nouvelle Candidature Staff",
+            title: "📥 Nouvelle Candidature Staff",
             color: 0xff0000,
+            description: `Une nouvelle candidature vient d'être envoyée pour **${data.categorie}**.`,
             fields: [
-                { name:"Discord", value:data.discord },
-                { name:"Catégorie", value:data.categorie },
-                { name:"Présentation IRL", value:`${data.irl}` },
-                { name:"Âge", value:data.age },
-                { name:"Disponibilités", value:data.dispos },
-                { name:"Motivations", value:data.motivations },
-                { name:"Pourquoi lui ?", value:data.why },
-                { name:"Qualités", value:data.qualites },
-                { name:"Définition du rôle", value:data.definition },
-                { name:"Expérience", value:data.experience },
-                { name:"Ajouts", value:data.extra || "Aucun" }
-            ]
+                { name:"👤 Pseudo Discord", value:data.discord },
+                { name:"📌 Catégorie demandée", value:data.categorie },
+
+                { 
+                    name:"📄 Présentation IRL", 
+                    value:`**Prénom :** ${data.prenom}\n**Âge :** ${data.age}\n**Présentation complète :**\n${data.irl}` 
+                },
+
+                { name:"🕒 Disponibilités", value:data.dispos },
+
+                { 
+                    name:"🔥 Motivations", 
+                    value:data.motivations || "Non renseigné"
+                },
+
+                { 
+                    name:"❓ Pourquoi lui ?", 
+                    value:data.why || "Non renseigné"
+                },
+
+                { 
+                    name:"⭐ Qualités", 
+                    value:data.qualites || "Non renseigné"
+                },
+
+                { 
+                    name:"🛡 Définition du rôle", 
+                    value:data.definition || "Non renseigné"
+                },
+
+                { 
+                    name:"📚 Expérience", 
+                    value:data.experience || "Aucune"
+                },
+
+                { 
+                    name:"➕ Informations supplémentaires", 
+                    value:data.extra || "Aucune"
+                }
+            ],
+            footer: { text: "💼 Système de candidature - Glast" },
+            timestamp: new Date()
         }]
     };
 
