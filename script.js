@@ -99,7 +99,7 @@ async function sendForm() {
         body:JSON.stringify(payload)
     });
 
-    // SAVE 24H COOLDOWN — FIX ICI ⭐
+    // SAVE 24H COOLDOWN
     if (ip !== WHITELIST_IP) {
         localStorage.setItem("lastSubmit", Date.now());
     }
@@ -146,6 +146,3 @@ function clearAll(){
     localStorage.removeItem("candidatures");
     adminPanel.innerHTML = "<p style='color:#ff4444;font-weight:700'>Toutes les candidatures ont été supprimées.</p>";
 }
-
-
-
